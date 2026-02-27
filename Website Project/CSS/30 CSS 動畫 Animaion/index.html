@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border: 5px solid;
+            font-size: 2em;
+            text-align: center;
+
+            /* animation-name: slide-left;
+            animation-duration: 3s; */
+            animation: slide-left 3s;
+        }
+
+        @keyframes slide-left {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">Hi</div>
+</body>
+
+</html>

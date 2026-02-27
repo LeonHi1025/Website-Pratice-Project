@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span[class] {
+            /*只要有class屬性*/
+            color: purple;
+        }
+
+        /* a[href="https://www.google.com"] {
+            href等於這個網址
+            color: red;
+        } */
+
+        a[title] {
+            /*只要有title屬性*/
+            color: red;
+        }
+
+        a[href$=".pdf"] {
+            /*herf結尾是.pdf*/
+            color: green;
+        }
+
+        a[href^="https"] {
+            /*herf開頭是https*/
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="class1">這是一個紫色的段落</span>
+    <span class="class2">這也是一個紫色的段落</span>
+    <span>這個段落不是紫色。</span>
+    <a href="http://www.google.com" title="search">這是一個紅色的連結</a>
+    <a href="http://www.example.com" title="example">這也是一個紅色的連結</a>
+    <a href="file.pdf">這是一個綠色的鏈結。</a>
+    <a href="https://www.example.com">這是一個粉紅色的連結</a>
+    <span class="class1 class2">這是一個紫色的段落，具有許多個類別</span>
+</body>
+
+</html>

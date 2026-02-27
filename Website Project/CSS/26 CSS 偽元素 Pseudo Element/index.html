@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1::first-letter {
+            color: blue;
+        }
+
+        p::first-line {
+            color: red;
+        }
+
+        p::selection {
+            /* 反白 */
+            background-color: gray;
+            color: white;
+        }
+
+        #fruit li::before {
+            content: "[我是加在前面的內容]可以拿來放貼圖";
+        }
+
+        #apple:after {
+            content: "🍎";
+        }
+
+        #banana:after {
+            content: "🍌";
+        }
+
+        #orange:after {
+            content: "🍊";
+        }
+
+        /* 測試用：暫時把 before 拿掉 */
+        #fruit li::marker {
+            content: "*";
+            color: red;
+            font-size: 1.5rem;
+        }
+
+        #fruit li {
+            padding-left: 10px;
+            /* 給標記一點空間 */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS 偽元素</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+    <ul id="fruit">
+        <li id="apple">蘋果</li>
+        <li id="banana">香蕉</li>
+        <li id="orange">橙子</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #main {
+            display: flex;
+            min-height: 60vh;
+        }
+
+        #main>article {
+            flex: 1;
+        }
+
+        #main>nav,
+        #main>aside {
+            flex: 0 0 20vw;
+            background-color: beige;
+        }
+
+        #main>nav {
+            order: -1;
+        }
+
+        header,
+        footer,
+        article,
+        nav,
+        aside {
+            padding: 1em;
+        }
+
+        header,
+        footer {
+            background-color: yellowgreen;
+            height: 20vh;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Header</header>
+    <div id="main">
+        <article>Article</article>
+        <nav>Nav</nav>
+        <aside>Aside</aside>
+    </div>
+    <footer>Footer</footer>
+</body>
+
+</html>
