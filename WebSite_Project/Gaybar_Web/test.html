@@ -1,0 +1,249 @@
+<!DOCTYPE html> <!-- 宣告這是一份 HTML5 文件 -->
+<html lang="zh-TW"> <!-- 設定網頁的主要語言為繁體中文，這有助於搜尋引擎優化 (SEO) 和語音朗讀軟體 -->
+
+<head> <!-- head 區塊包含網頁的元資料 (metadata)，不會直接顯示在網頁畫面上 -->
+    <meta charset="UTF-8"> <!-- 設定網頁的字元編碼為 UTF-8，確保各國語言（包括中文）能正常顯示不會變成亂碼 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 讓網頁能在行動裝置上正確縮放，是響應式設計 (RWD) 的關鍵設定 -->
+    <title>Meet Our Team | 我們的團隊</title> <!-- 設定顯示在瀏覽器分頁標籤上的網頁標題 -->
+
+    <!-- 透過 Google Fonts 引入外部字體 -->
+    <!-- preconnect 可以預先連線到字體伺服器，加快字體載入速度 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 引入英文字體 Inter (粗細：300, 400, 600, 800) 與中文字體 Noto Sans TC (粗細：300, 400, 500, 700) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- 引入外部 CSS 樣式表 -->
+    <link rel="stylesheet" href="./style.css">
+    <script src="./warningchecker.js"></script>
+</head>
+
+<body>
+
+    <!-- 背景動態光暈球 HTML 佈局 -->
+    <div class="background-glow">
+        <div class="glow-circle glow-1"></div> <!-- 左上的紫色光暈 -->
+        <div class="glow-circle glow-2"></div> <!-- 右下的粉色光暈 -->
+    </div>
+
+    <!-- 網頁內容的居中主要框架 -->
+    <div class="container">
+        <!-- 頂部標題與介紹區塊，會套用 fadeInUp 動畫 -->
+        <div class="hero-section">
+            <div class="tagline">Creative Minds</div> <!-- 頂部裝飾標籤 -->
+            <h1>The <span>GayBar</span></h1> <!-- 帶有漸層特效「Dream Team」的主標題 -->
+            <p class="hero-desc"> <!-- 描述介紹文字 -->
+                由一群非自願當成員的男模所組成的團體。希望帶來最好的體驗。
+            </p>
+        </div>
+
+        <!-- 團隊卡片排列網格，CSS 負責處理多張卡片的 RWD 自適應縮放排版 -->
+        <div class="team-grid">
+            <!-- ====== 成員 1 簡介卡片 ====== -->
+            <div class="member-card captain-card" data-url="member1.html">
+                <div class="captain-badge">👑 會長</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/0318B9A4-B7C2-4965-B0AF-91B52929AC54.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">Andy Chen</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">Andy is
+                            coming</span></div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">爵士樂手</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 2 簡介卡片 ====== -->
+            <div class="member-card " data-url="member2.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/51A5E86D-35C6-493E-803A-02CAAE2AEC91.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">王🌈彥</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">猛1</span></div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">報紙蛋餅外送員</span>
+                    </div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 3 簡介卡片 ====== -->
+            <div class="member-card " data-url="member3.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/B2358E5B-F25B-4C06-8BBB-3083BC1B2522.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">遊強</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">一直傳裸照的變態</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">健身教練</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 4 簡介卡片 ====== -->
+            <div class="member-card " data-url="member4.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/CD6C9413-5C3E-44EB-B353-97AF2EC44056.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">謝亞諺</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">深藏不露的偷卷怪</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">台積電員工</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 5 簡介卡片 ====== -->
+            <div class="member-card " data-url="member5.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/D8975808-FBA7-414D-B35B-DBD207E3BF4D.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">雷包害我被老師罵的<br>little p</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">幹誰用的</span></div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">説説怪</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 6 簡介卡片 ====== -->
+            <div class="member-card " data-url="member6.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/E86C5298-FDDF-4750-926D-EEC896465E9F.JPG" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">JasonBoBo</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">巨痛苦</span></div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">睡覺</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 7 簡介卡片 ====== -->
+            <div class="member-card " data-url="member7.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/IMG20251118173320.jpg" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">MarkuteWu</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">Ubereat</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">全職交易員</span></div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+
+            <!-- ====== 成員 8 簡介卡片 ====== -->
+            <div class="member-card " data-url="member8.html">
+                <div class="member-badge">❤️男模</div>
+                <div class="avatar">
+                    <img class="avatar-img" src="./Some Gay/IMG20251221180020.jpg" alt="成員照片">
+                </div>
+                <!-- 首頁只顯示名字或簡單的職業，點擊後看詳細 -->
+                <h3 class="member-name">菜菜子</h3>
+
+                <div class="member-info">
+                    <div class="info-row"><span class="info-label">綽號：</span><span class="info-value">喔是喔</span></div>
+                    <div class="info-row"><span class="info-label">職業：</span><span class="info-value">誤人子弟的程式老師</span>
+                    </div>
+                    <!-- 首頁隱藏詳細簡介，只留一行提示或空著 -->
+                    <div class="info-row"><span class="info-label">點擊小卡查看詳細個人資料</span></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">FB</a>
+                </div>
+            </div>
+        </div> <!-- grid 結束 -->
+    </div> <!-- container 結束 -->
+
+    <!-- 年齡驗證彈跳視窗 (Overlay) -->
+    <div id="age-verification" class="age-overlay">
+        <div class="age-modal">
+            <h2>⚠️ 年齡限制</h2>
+            <p>本網站內容僅限 20 歲以上成人瀏覽。</p>
+            <p>請問您是否已滿 20 歲？</p>
+            <div class="age-buttons">
+                <button id="btn-yes" class="age-btn btn-primary">是的，我已滿 20 歲</button>
+                <button id="btn-no" class="age-btn btn-secondary">未滿 20 歲，離開</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 Vanilla-Tilt.js 提供 3D 傾斜互動效果 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+
+    <!-- 引入獨立的 JavaScript 功能 -->
+    <script src="./main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+/* CSS 樣式區塊開始 */
+/* 定義全域變數 (:root)，方便之後統一修改網站的顏色主題 */
+/* --變數名稱: 值; */
+:root {
+    /* 主背景色：淺淺的粉藍色調，保持明亮且彩色 */
+    --bg-color: #f8fafc;
+    /* 主要文字顏色：深灰黑色，確保在淺色背景上的閱讀性 */
+    --text-main: #1e293b;
+    /* 次要文字顏色：淺灰色 */
+    --text-muted: #64748b;
+    /* 卡片背景：玻璃擬態，帶有非常微弱的白色半透明 */
+    --card-bg: rgba(255, 255, 255, 0.7);
+    /* 卡片邊框：非常淡的灰色 */
+    --card-border: rgba(255, 255, 255, 0.5);
+    /* 主要光暈：較柔和的莫蘭迪粉色 */
+    --primary-glow: rgba(244, 114, 182, 0.3);
+    /* 次要光暈：較柔和的莫蘭迪藍色 */
+    --secondary-glow: rgba(56, 189, 248, 0.3);
+    /* 強調用漸層（用於按鈕或特殊標示）：活潑的紫紅到亮橘 */
+    --accent-gradient: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+    /* 隊長專屬發光顏色：耀眼的金黃色 */
+    --captain-glow: rgba(250, 204, 21, 0.6);
+}
+
+/* 重置所有 HTML 元素的預設邊距與內距，確保不同瀏覽器呈現一致 */
+* {
+    box-sizing: border-box;
+    /* 讓元素的寬度與高度包含 padding 和 border，排版更直覺 */
+    margin: 0;
+    /* 移除預設外邊距 */
+    padding: 0;
+    /* 移除預設內邊距 */
+}
+
+/* 整個網頁主體的樣式設定 */
+body {
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    /* 設定優先使用 Inter字體，中文使用 Noto Sans TC，若無則用系統無襯線字體 */
+    background-color: var(--bg-color);
+    /* 套用自訂的深色背景變數 */
+    color: var(--text-main);
+    /* 套用自訂的白色文字變數 */
+    min-height: 100vh;
+    /* 確保網頁最小高度佔滿整個螢幕畫面 (Viewport Height) */
+    overflow-x: hidden;
+    /* 隱藏水平方向的捲軸，防止因光暈元素超出螢幕產生多餘的白邊 */
+    position: relative;
+    /* 設定相對定位，讓內部使用 absolute 定位的背景光暈能以 body 為基準 */
+}
+
+/* 負責產生背景光暈效果的容器 */
+.background-glow {
+    position: absolute;
+    /* 絕對定位，脫離正常文檔流 */
+    top: 0;
+    left: 0;
+    /* 固定在左上角 */
+    width: 100%;
+    height: 100%;
+    /* 涵蓋整個網頁大小 */
+    overflow: hidden;
+    /* 確保光暈不會超出版面 */
+    z-index: -1;
+    /* 設定在最下層，作為背景（圖層 -1） */
+}
+
+/* 共用的圓形光暈樣式 */
+.glow-circle {
+    position: absolute;
+    /* 絕對定位，可以用 top/left/bottom/right 隨意擺放 */
+    border-radius: 50%;
+    /* 變成正圓形 */
+    filter: blur(120px);
+    /* ★ 關鍵：加上非常重的模糊效果，讓它看起來像發光的光暈 */
+    opacity: 0.6;
+    /* 設定透明度為 60% */
+    /* 加上名為 float 的自訂動畫，持續 10 秒，無限迴圈，交替方向 (alternate)，並平滑進入與退出 (ease-in-out) */
+    animation: float 10s infinite alternate ease-in-out;
+}
+
+/* 左上角的主要光暈設定 */
+.glow-1 {
+    width: 600px;
+    height: 600px;
+    /* 設定寬高 */
+    background: var(--primary-glow);
+    /* 套用靛藍色變數 */
+    top: -200px;
+    left: -100px;
+    /* 定位在偏左上方 */
+}
+
+/* 右下角的次要光暈設定 */
+.glow-2 {
+    width: 500px;
+    height: 500px;
+    /* 稍微小一點 */
+    background: var(--secondary-glow);
+    /* 套用粉紫色變數 */
+    bottom: -100px;
+    right: -100px;
+    /* 定位在偏右下方 */
+    animation-delay: -5s;
+    /* ★ 讓它的動畫延遲（或提早）5秒開始，這樣兩顆光暈移動才會有層次錯開的感覺 */
+}
+
+/* 定義名為 float 的關鍵影格動畫 (Keyframes)，用於光暈漂浮 */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    /* 原始位置與大小 */
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+
+    /* 移動 50px 並放大 1.1 縮放比例 */
+}
+
+/* 限制頁面主要內容寬度的容器，確保在大螢幕上內容不會無限延伸 */
+.container {
+    max-width: 1200px;
+    /* 最大寬度限制為 1200px */
+    margin: 0 auto;
+    /* 左右自動對齊 (auto)，讓容器置中顯示 */
+    padding: 80px 20px;
+    /* 上下保留 80px 的空間，左右保留 20px，避免手機版貼齊邊緣 */
+    position: relative;
+    /* 確保 z-index 生效 */
+    z-index: 1;
+    /* 設定內容層級比背景光暈 (-1) 高 */
+}
+
+/* 網頁上方的文字介紹區塊 (Hero Section) */
+.hero-section {
+    text-align: center;
+    /* 讓內文全部水平置中 */
+    margin-bottom: 80px;
+    /* 距離下方的卡片網格有 80px 的距離 */
+    /* 下面三行是進場動畫設定：初始透明度 0、向下偏移 20px，然後執行 fadeInUp 動畫 */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards ease-out;
+    /* forwards 讓動畫停留在最後的狀態，不會閃回原樣 */
+}
+
+/* 標題上方裝飾用的小標籤 */
+.tagline {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #ec4899;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 主標題 (H1) 設定 */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+/* 針對主標題內特定的強調字眼 (Dream Team) 應用不同的漸層色彩 */
+h1 span {
+    background: var(--accent-gradient);
+    /* 使用變數定義好的紫藍漸層 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 標題下方的副標描述文字 */
+.hero-desc {
+    font-size: 1.1rem;
+    /* 字級大小調整 */
+    color: var(--text-muted);
+    /* 套用淺灰藍顏色 */
+    max-width: 600px;
+    /* 限制最大寬度，避免文字太長難以閱讀 */
+    margin: 0 auto;
+    /* 讓這段文字區塊在畫面中水平置中 */
+    line-height: 1.6;
+    /* 1.6 倍行高，讓閱讀更舒適 */
+}
+
+/* 用來包裝團隊卡片的網格系統區塊 */
+.team-grid {
+    display: grid;
+    /* 啟用 CSS Grid 網格佈局 */
+    /* ★ 強大的響應式寫法：自動產生欄位，每個欄位最少 300px 寬，空間夠的話就均分比例 (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    /* 每個卡片之間的間隔為 30px */
+    /* 加入進場動畫，並延遲 0.3 秒，製造出標題先出現、卡片後出現的層次感 */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards ease-out 0.3s;
+}
+
+/* 獨立成員卡片的外觀與效果設定 (現代玻璃擬態設計) */
+.member-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    /* 移除 overflow: hidden 以允許隊長徽章等裝飾超出邊界 */
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* 增加輕微陰影讓白色卡片浮出來 */
+}
+
+/* 利用偽元素 ::before 在卡片內部加上一層非常淡的頂部打光感，增加立體度 */
+.member-card::before {
+    content: '';
+    /* 必需屬性，產生一個空元素 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 覆蓋整個卡片 */
+    width: 100%;
+    height: 100%;
+    /* 由上而下 5% 透明白 到 0% 完全透明的漸層 */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 0;
+    /* 放底層 */
+    pointer-events: none;
+    /* 滑鼠不會觸發到它，不會干擾點擊操作 */
+}
+
+/* 設定標題卡片「滑鼠懸停 (Hover)」時的動態效果 */
+.member-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(236, 72, 153, 0.4);
+    /* Hover 變粉紅色邊框 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(236, 72, 153, 0.2);
+}
+
+/* 隊長專屬樣式 (Captain Card) */
+.captain-card {
+    border: 2px solid gold;
+    /* 金色邊框 */
+    box-shadow: 0 10px 30px rgba(250, 204, 21, 0.2);
+    /* 讓隊長卡片佔據整行 */
+    grid-column: 1 / -1;
+    /* 限制最大寬度並置中，否則卡片會拉得過長 */
+    min-width: 350px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.captain-card:hover {
+    border-color: #eab308;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 30px var(--captain-glow);
+}
+
+/* 隊長徽章 (Badge) */
+.captain-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: linear-gradient(135deg, #fde047 0%, #eab308 100%);
+    color: #713f12;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(234, 179, 8, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: bounce 2s infinite;
+}
+
+/* 成員專屬徽章 (Badge) */
+.member-badge {
+    position: absolute;
+    top: -10px;
+    background: linear-gradient(135deg, #f3a405 0%, #f00303 100%);
+    color: #713f12;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 6px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(234, 179, 8, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.avatar {
+    width: 140px;
+    /* 稍微放大照片 */
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* 減弱陰影以配合彩色背景 */
+    border: 4px solid #ffffff;
+    /* 改用全白邊框突顯照片 */
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    /* 確保照片裁切成圓形 */
+    background: #f1f5f9;
+    /* 圖片載入前的底色 */
+}
+
+/* 確保照片填滿頭像容器且不變形 */
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ★ 讓圖片保持比例填滿中心，裁除多餘部分 */
+    display: block;
+}
+
+.member-card:hover .avatar {
+    transform: scale(1.08);
+    /* 動畫消除旋轉，僅保留微放大 */
+}
+
+.member-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    /* 增加與底下資訊欄位的距離 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 成員詳細資訊列表設定 */
+.member-info {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-row {
+    display: flex;
+    align-items: baseline;
+    font-size: 0.95rem;
+    /* 稍微縮小文字，讓排版精緻 */
+}
+
+.info-label {
+    min-width: 60px;
+    /* 固定標題寬度讓冒號對齊 */
+    font-weight: 700;
+    color: var(--text-main);
+    display: inline-block;
+}
+
+.info-value {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.info-bio {
+    flex-direction: column;
+    /* 簡介通常多行，改為上下排列 */
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.info-bio .info-value {
+    line-height: 1.6;
+}
+
+/* 社交網站按鈕的外層容器 (Flex 排版) */
+.social-links {
+    display: flex;
+    /* 並排顯示按鈕 */
+    justify-content: center;
+    /* 把它們集中放在正中央 */
+    gap: 20px;
+    /* 每個按鈕之間間隔 20px */
+    margin-top: 24px;
+    /* 距離上方文字區塊 24px */
+    position: relative;
+    z-index: 1;
+}
+
+/* 個別的圓弧社交按鈕設定 (根據字長自動伸縮) */
+.social-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 18px;
+    background: #e2e8f0;
+    /* 回歸實體淺灰藍背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    /* 字體改回深色 */
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* 按鈕的滑鼠懸停 (Hover) 效果 */
+.social-btn:hover {
+    background: var(--accent-gradient);
+    color: white;
+    /* Hover 時字體反白 */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
+    /* 粉紅光暈 */
+}
+
+/* 定義所有進場元素共用的關鍵影格動畫 (由下往上淡入) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        /* 開始為透明 */
+        transform: translateY(30px);
+        /* 往下偏移 30 像素 */
+    }
+
+    to {
+        opacity: 1;
+        /* 最終完全不透明 */
+        transform: translateY(0);
+        /* 回到原始位置 */
+    }
+}
+
+/* 媒體查詢 (Media Queries) - 針對螢幕寬度小於 768px (平板與手機)的覆寫設定 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 把主標題稍微縮小以免超出手機螢幕 */
+    .container {
+        padding: 40px 20px;
+    }
+
+    /* 縮小手機版的上下留白，保留更多螢幕高度給內容 */
+}
+
+/* =========================================
+   年齡驗證彈跳視窗 (Age Verification Modal)
+   ========================================= */
+.age-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.85);
+    /* 深色半透明背景覆蓋全螢幕 */
+    backdrop-filter: blur(15px);
+    /* 背景極度模糊化 */
+    -webkit-backdrop-filter: blur(15px);
+    /* 預設隱藏，由 JS 決定是否顯示，避免換頁時閃爍 */
+    display: none;
+    /* align-items: center; */
+    /* justify-content: center; */
+    z-index: 9999;
+    /* 確保在最上層 */
+    transition: opacity 0.4s ease;
+}
+
+.age-modal {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 40px;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25),
+        0 0 40px rgba(236, 72, 153, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation: modal-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modal-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.age-modal h2 {
+    color: #e11d48;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.age-modal p {
+    color: #475569;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.age-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.age-btn {
+    padding: 16px 24px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(236, 72, 153, 0.4);
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+/* 點擊卡片時產生的水波紋擴散動畫 */
+@keyframes ripple-effect {
+    to {
+        transform: translate(-50%, -50%) scale(40);
+        opacity: 0;
+    }
+}

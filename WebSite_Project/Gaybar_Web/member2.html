@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>詳細個人資料 | The GayBar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./member_card.css">
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
+    <div class="background-glow">
+        <div class="glow-circle glow-1"></div>
+        <div class="glow-circle glow-2"></div>
+    </div>
+
+    <!-- 返回首頁按鈕獨立於框框外面上方 -->
+    <div style="width: 100%; max-width: 800px; margin-bottom: 20px; position: relative; z-index: 10;">
+        <a href="test.html"
+            style="display: inline-block; color: var(--text-main); text-decoration: none; font-weight: 600; background: rgba(255,255,255,0.8); padding: 12px 24px; border-radius: 30px; backdrop-filter: blur(10px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+            &larr; 返回首頁名單
+        </a>
+    </div>
+
+    <!-- 個人詳細資料超大白色玻璃框框區塊 -->
+    <div class="profile-container ">
+
+        <!-- 上半部：大頭貼與標題 -->
+        <div class="profile-header">
+            <img class="profile-avatar" src="./Some Gay/51A5E86D-35C6-493E-803A-02CAAE2AEC91.JPG" alt="成員大張照片">
+            <div class="profile-title">
+                <div class="role-badge">❤️男模</div>
+                <h1>王🌈彥</h1>
+                <div class="social-links" style="justify-content: flex-start; margin-top: 15px;">
+                    <a href="#" class="social-btn">Instagram</a>
+                    <a href="#" class="social-btn">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中半部：基本資料 (擴充了身高體重星座欄位供人填寫) -->
+        <div class="profile-details">
+            <div class="detail-item"><strong>綽號：</strong> 猛1</div>
+            <div class="detail-item"><strong>年齡：</strong> 25</div>
+            <div class="detail-item"><strong>身高：</strong> 175</div>
+            <div class="detail-item"><strong>體重：</strong> 65</div>
+            <div class="detail-item"><strong>職業：</strong> 報紙蛋餅外送員</div>
+            <div class="detail-item"><strong>星座：</strong> 蛋餅座</div>
+        </div>
+
+        <!-- 下半部：詳細簡介 -->
+        <div class="profile-bio">
+            <h3>關於我 (About Me)</h3>
+            <p>這裡是超級詳細的個人簡介區塊！你可以寫好幾段文字來介紹自己。</p>
+            <p>包含平時的興趣、專長、喜歡吃什麼、平常休假都在做什麼等等... 這個區塊有很大的空間可以讓你暢所欲言！</p>
+        </div>
+
+    </div>
+
+    <!-- 這裡延續載入主體的 JS，讓波紋點擊等功能在專屬頁面也能使用 -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
